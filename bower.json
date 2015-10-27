@@ -1,0 +1,20 @@
+{
+  "name": "deals",
+  "version": "0.0.0",
+  "authors": [
+    "HilsonF"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.7",
+    "angular": "~1.4.7",
+    "angularfire": "~1.1.3"
+  }
+}

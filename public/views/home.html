@@ -1,0 +1,57 @@
+<h1>This is the home page </h1>
+
+<form>
+
+<div class="form-group col-lg-6">
+<label for="">Search</label>
+<input class="form-control" type="text" ng-mode="search.txt" placeholder="search here" autofocus />
+</div>
+
+<div class="form-group col-lg-6">
+<label for="">Search</label>
+<select class="form-control" id="" ng-model="search.group">
+<option value="name">Name</option>
+<option value="reknown">Reknown</option>
+</select>
+</div>
+
+<div class="form-group col-lg-6">
+<label for="assending">Assending</label>
+<input type="radio" ng-model="direction" name="direction" id="assending" checked />
+
+<label for="decending">Decending</label>
+<input type="radio" ng-model="direction" name="direction" id="decending" value="reverse">
+</div>
+
+</form>
+
+<form ng-submit="postComment()">
+<div class="form-group col-lg-6">
+<label for="">Name</label>
+<input class="form-control" type="text" ng-model="newComment.name" placeholder="Enter Name" autofocus />
+</div>
+
+<div class="form-group col-lg-6">
+<label for="">Adddress</label>
+<input class="form-control" type="text" ng-model="newComment.address" placeholder="Enter Address" autofocus />
+</div>
+
+<button type="submit" class="btn btn-danger">Submit</button>
+
+</form>
+
+
+<div ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
+<h3>{{ artist.name }}</h3>
+<h3>{{ artist.address }}</h3>
+
+
+<!-- <h4>{{ artist.reknown}}</h3>
+<p> {{ artist.bio | limitTo: 140}}
+	{{ artist.bio.length > 140 ? '...' : ''}}
+</p> -->
+
+<!-- <a href="">
+<pre> {{artist | json}}</pre>
+</a> -->
+</div>

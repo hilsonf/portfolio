@@ -1,6 +1,6 @@
-<h1>This is the home page </h1>
+<h1>Deals</h1>
 
-<form>
+<!-- <form>
 
 <div class="form-group col-lg-6">
 <label for="">Search</label>
@@ -23,30 +23,101 @@
 <input type="radio" ng-model="direction" name="direction" id="decending" value="reverse">
 </div>
 
-</form>
+</form> -->
+
+<!-- <form>
+<input class="form-control" type="text" ng-mode="search.txt" placeholder="search here" autofocus />
+</form> -->
 
 <form ng-submit="postComment()">
-<div class="form-group col-lg-6">
+<div class="form-group col-lg-4">
 <label for="">Name</label>
 <input class="form-control" type="text" ng-model="newComment.name" placeholder="Enter Name" autofocus />
 </div>
 
-<div class="form-group col-lg-6">
+<div class="form-group col-lg-4">
 <label for="">Adddress</label>
 <input class="form-control" type="text" ng-model="newComment.address" placeholder="Enter Address" autofocus />
 </div>
 
-<button type="submit" class="btn btn-danger">Submit</button>
+<div class="form-group col-lg-4">
+	<label for="">Add</label>
+	<button type="submit" class="btn btn-danger">Add</button>
+</div>
 
 </form>
 
 
-<div ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
-<h3>{{ artist.name }}</h3>
-<h3>{{ artist.address }}</h3>
+<div class="col-lg-12">
+
+<table class="table table-striped" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ artist.name }} </td>
+        <td>{{ artist.address }} </td>
+        <td> 
+        	<button class="btn btn-success" ng-click="removeComment(artist)">Remove</button>
+    	 
+<!-- 			<button class="btn btn-success" class="btn btn-info btn-lg" data-toggle="modal" data-target="#updateModal" ng-click="updateComment(artist, $index)">Update</button> -->
+
+			 <button class="btn btn-success" ng-click="open(artist, $index)">Open me!</button>
+		</td>
+      </tr>
+    </tbody>
+</table>
+
+  <!-- Modal -->
+<!--   <div class="modal fade" id="updateModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Info</h4>
+        </div>
+        <div class="modal-body">
+           
+		<form ng-submit="updateInfo()">
+		<div class="form-group col-lg-6">
+		<label for="">Name</label>
+		<input class="form-control" type="text" ng-model="editArtist.name" ng-change="artists.$save(artist)" placeholder="{{updateArtist.name}}" autofocus />
+		</div>
+
+		<div class="form-group col-lg-6">
+		<label for="">Adddress</label>
+		<input class="form-control" type="text" ng-model="editArtist.address" ng-change="artists.$save(artist)" placeholder="{{updateArtist.address}}" autofocus />
+		</div>
+
+		<div class="form-group col-lg-12">
+			<button type="submit" class="btn btn-danger">Update</button>
+		</div>
+
+		</form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</div>
 
 
-<!-- <h4>{{ artist.reknown}}</h3>
+
+
+
+
+
+
+
+<!-- <h4>{{ artist.reknown}}</h4>
 <p> {{ artist.bio | limitTo: 140}}
 	{{ artist.bio.length > 140 ? '...' : ''}}
 </p> -->
@@ -54,4 +125,4 @@
 <!-- <a href="">
 <pre> {{artist | json}}</pre>
 </a> -->
-</div>
+<!-- </div> -->

@@ -4,8 +4,12 @@ angular.module('myapp')
 	$routeProvider
 	.when('/',{
 		templateUrl: 'views/home.html',
-		controller: 'homeCtrl', function ($scope,$http){ 
-			console.log("I Am HOME");
+		controller: 'homeCtrl', function ($scope, $http){ 
+		}
+	})
+	.when('/update',{
+		templateUrl: 'views/update.html',
+		controller: 'homeCtrl', function ($scope, $http){ 
 		}
 	})
 	.otherwise('/')

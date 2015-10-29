@@ -1,1 +1,1 @@
-angular.module('myapp', ['ngRoute', 'firebase'])
+angular.module('myapp', ['ngRoute', 'firebase','ui.bootstrap'])

@@ -1,31 +1,29 @@
-	
-
     <div class="modal-header">
-      <button type="button" class="close" ng-click="cancel()">&times;</button>
-      <h4 class="modal-title">Modal title</h4>
+		<button type="button" class="close" ng-click="cancel()">&times;</button>
+		<h4 class="modal-title">Modal title</h4>
     </div>
     <div class="modal-body">
-			<form ng-submit="updateInfo()">
-				<div class="form-group col-lg-6">
-				<label for="">Name</label>
-				<input class="form-control" type="text" ng-model="editArtist.name" ng-change="artists.$save(artist)" placeholder="{{updateArtist.name}}" autofocus />
-				</div>
+		<form ng-submit="updateInfo()">
+			<div class="form-group col-lg-6">
+			<label for="">Name</label>
+			<input class="form-control" type="text" ng-model="editArtist.itemName" ng-change="artists.$save(artist)" placeholder="{{updateArtist.name}}" autofocus />
+			</div>
 
-				<div class="form-group col-lg-6">
-				<label for="">Adddress</label>
-				<input class="form-control" type="text" ng-model="editArtist.address" ng-change="artists.$save(artist)" placeholder="{{updateArtist.address}}" autofocus />
-				</div>
+			<div class="form-group col-lg-6">
+			<label for="">Price</label>
+			<input class="form-control" type="text" ng-model="editArtist.itemPrice" ng-change="artists.$save(artist)" autofocus />
+			</div>
 
-<!-- 				<div class="form-group col-lg-12">
-					<button type="submit" class="btn btn-danger">Update</button>
-				</div> -->
-			</form>
-		</div>
-
-	  <div class="modal-footer">
-      <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
-      <button type="submit" class="btn btn-primary" ng-click="ok()">Save changes</button>
-    </div>
+			<div class="form-group col-lg-6">
+			<label for="">Adddress</label>
+			<input class="form-control" type="text" ng-model="editArtist.address" ng-change="artists.$save(artist)" placeholder="{{updateArtist.address}}" autofocus />
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+	<button type="button" class="btn btn-default" ng-click="cancel()">Cancle</button>
+	<button type="submit" class="btn btn-primary" ng-click="ok()">Save changes</button>
+	</div>
 
 
 

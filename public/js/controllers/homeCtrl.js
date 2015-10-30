@@ -1,19 +1,29 @@
-angular.module('myapp')
-.controller('homeCtrl', ['$scope', '$http','$firebaseArray','$location','$uibModal', function ($scope, $http, $firebaseArray, $location, $uibModal){
+var myapp= angular.module('myapp')
+myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseArray','$location','$uibModal', function ($scope, $rootScope, $http, Auth, $firebaseArray, $location, $uibModal){
 	console.log('Home controller in use');
 
-	var ref = new Firebase('https://crackling-torch-2540.firebaseio.com/');
-	$scope.artists = $firebaseArray(ref);
 	
+	myapp.factory("Auth", function ($firebaseAuth){
+	var ref = new Firebase("https://dailydeals.firebaseio.com/");
+	return $firebaseAuth(ref);
+	});
 
+	var ref = new Firebase('https://dailydeals.firebaseio.com/');
+
+	$scope.artists = $firebaseArray(ref);
+
+	$scope.fbLogout = function() {
+		Auth.$unauth();
+		$location.path('/');
+	}
+	
 	$scope.postComment = function(){
-		// console.log("data",$scope.newComment);
-
 		$scope.artists.$add({
-			name: $scope.newComment.name,
+			itemName: $scope.newComment.itemName,
+			itemPrice: $scope.newComment.itemPrice,
 			address: $scope.newComment.address
 		})
-		$location.path('/');
+		// $location.path('/dashboard');
 	}
 
 	$scope.removeComment = function(obj){
@@ -22,27 +32,15 @@ angular.module('myapp')
 		});
 	}
 
-	// $scope.updateComment = function(artist, index){
-	// 	console.log(artist);
-	// 	$scope.editArtist = angular.copy(artist);
-	// 	$scope.editArtistIndex = index
 
-	// }
-
-	// $scope.updateInfo = function(){
-	// 	console.log($scope.editArtist);
-	// 	$scope.artists[$scope.editArtistIndex] = $scope.editArtist;
-	// 	$scope.artists.$save($scope.editArtistIndex).then(function (ref){
-	// 		console.log(ref);
-	// 	});
-
-
-	// }
-////////MODAL
+////////MODAL OPEN
 $scope.open = function (artist, index) {
 
 	$scope.editArtist = angular.copy(artist);
-	$scope.editArtistIndex = index
+	$scope.editArtistIndex = index;
+
+	console.log(artist);
+	console.log($scope.editArtist);
 
     var modalInstance = $uibModal.open({
       templateUrl: './views/modal.html',
@@ -60,42 +58,27 @@ $scope.open = function (artist, index) {
 
     };
 
-
-
-
-
-
-	// get json data
-	// $http.get('js/data.json').success(function (data){
-	// 	$scope.artists = data;
-	// 	console.log($scope.artists);
-	// })
-
-
 }]);
 
-
+///UPDATE FUNCTION IN MODAL
 var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, index) {
-	var ref = new Firebase('https://crackling-torch-2540.firebaseio.com/');
+	var ref = new Firebase('https://dailydeals.firebaseio.com/');
 	$scope.artists = $firebaseArray(ref);
 
     $scope.editArtist = angular.copy(artist);
     $scope.editArtistIndex = index
   
-  $scope.ok = function () {
+  	$scope.ok = function () {
+	  	$scope.artists[$scope.editArtistIndex] = $scope.editArtist;
+		$scope.artists.$save($scope.editArtistIndex).then(function (ref){
+			console.log(ref);
+		});
+	    $uibModalInstance.close();
+  	};
 
-  	$scope.artists[$scope.editArtistIndex] = $scope.editArtist;
-	$scope.artists.$save($scope.editArtistIndex).then(function (ref){
-		console.log(ref);
-	});
-
-    $uibModalInstance.close();
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-
+	$scope.cancel = function () {
+	    $uibModalInstance.dismiss('cancel');
+	};
 
 };
 

@@ -1,7 +1,6 @@
 <h1>Deals</h1>
 
 <!-- <form>
-
 <div class="form-group col-lg-6">
 <label for="">Search</label>
 <input class="form-control" type="text" ng-mode="search.txt" placeholder="search here" autofocus />
@@ -22,17 +21,23 @@
 <label for="decending">Decending</label>
 <input type="radio" ng-model="direction" name="direction" id="decending" value="reverse">
 </div>
-
 </form> -->
 
-<!-- <form>
-<input class="form-control" type="text" ng-mode="search.txt" placeholder="search here" autofocus />
-</form> -->
+<div class="col-lg-4">
+<h3>{{user.facebook.displayName}}</h3>
+<img class="thumbnail" src="{{user.facebook.profileImageURL}}" alt'avatar'>
+<button ng-click="fbLogout()">Logout</button>
+</div>
 
 <form ng-submit="postComment()">
 <div class="form-group col-lg-4">
-<label for="">Name</label>
-<input class="form-control" type="text" ng-model="newComment.name" placeholder="Enter Name" autofocus />
+<label for="">Item Name</label>
+<input class="form-control" type="text" ng-model="newComment.itemName" placeholder="Enter Name" autofocus />
+</div>
+
+<div class="form-group col-lg-4">
+<label for="">Price</label>
+<input class="form-control" type="number" ng-model="newComment.itemPrice" placeholder="Enter Address" autofocus />
 </div>
 
 <div class="form-group col-lg-4">
@@ -53,60 +58,24 @@
 <table class="table table-striped" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Item Name</th>
+        <th>Price</th>
         <th>Address</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{{ artist.name }} </td>
+        <td>{{ artist.itemName }} </td>
+        <td>${{ artist.itemPrice }} </td>
         <td>{{ artist.address }} </td>
         <td> 
         	<button class="btn btn-success" ng-click="removeComment(artist)">Remove</button>
-    	 
-<!-- 			<button class="btn btn-success" class="btn btn-info btn-lg" data-toggle="modal" data-target="#updateModal" ng-click="updateComment(artist, $index)">Update</button> -->
-
 			 <button class="btn btn-success" ng-click="open(artist, $index)">Open me!</button>
 		</td>
       </tr>
     </tbody>
 </table>
-
-  <!-- Modal -->
-<!--   <div class="modal fade" id="updateModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Update Info</h4>
-        </div>
-        <div class="modal-body">
-           
-		<form ng-submit="updateInfo()">
-		<div class="form-group col-lg-6">
-		<label for="">Name</label>
-		<input class="form-control" type="text" ng-model="editArtist.name" ng-change="artists.$save(artist)" placeholder="{{updateArtist.name}}" autofocus />
-		</div>
-
-		<div class="form-group col-lg-6">
-		<label for="">Adddress</label>
-		<input class="form-control" type="text" ng-model="editArtist.address" ng-change="artists.$save(artist)" placeholder="{{updateArtist.address}}" autofocus />
-		</div>
-
-		<div class="form-group col-lg-12">
-			<button type="submit" class="btn btn-danger">Update</button>
-		</div>
-
-		</form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
 </div>
 
 

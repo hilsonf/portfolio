@@ -23,12 +23,13 @@
 </div>
 </form> -->
 
-<div class="col-lg-4">
+<!-- <div class="col-lg-4">
 <h3>{{user.facebook.displayName}}</h3>
 <img class="thumbnail" src="{{user.facebook.profileImageURL}}" alt'avatar'>
-<button ng-click="fbLogout()">Logout</button>
-</div>
+<button class="btn btn-danger" ng-click="fbLogout()">Logout</button>
+</div> -->
 
+<div class="row col-lg-12">
 <form ng-submit="postComment()">
 <div class="form-group col-lg-4">
 <label for="">Item Name</label>
@@ -41,25 +42,35 @@
 </div>
 
 <div class="form-group col-lg-4">
+<label for="">Image Upload</label>
+<input class="form-control" type="file" ngf-select="uploadFiles($files)" ng-model="newComment.img" autofocus />
+</div>
+
+
+<div class="form-group col-lg-4">
 <label for="">Adddress</label>
 <input class="form-control" type="text" ng-model="newComment.address" placeholder="Enter Address" autofocus />
 </div>
 
 <div class="form-group col-lg-4">
-	<label for="">Add</label>
 	<button type="submit" class="btn btn-danger">Add</button>
 </div>
 
 </form>
+</div>
 
-
-<div class="col-lg-12">
+<div class="row col-lg-12">
+<div ng-if="alert">
+  <uib-alert type="success">{{alert.msg}}</uib-alert>
+</div>
 
 <table class="table table-striped" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
     <thead>
       <tr>
         <th>Item Name</th>
         <th>Price</th>
+        <th>Image</th>
+
         <th>Address</th>
         <th>Action</th>
       </tr>
@@ -68,10 +79,11 @@
       <tr>
         <td>{{ artist.itemName }} </td>
         <td>${{ artist.itemPrice }} </td>
+        <td><img class="thumbnail" ng-src="{{ artist.itemImage }}"></td>
         <td>{{ artist.address }} </td>
         <td> 
         	<button class="btn btn-success" ng-click="removeComment(artist)">Remove</button>
-			 <button class="btn btn-success" ng-click="open(artist, $index)">Open me!</button>
+			 <button class="btn btn-success" ng-click="open(artist, $index, $files)">Open me!</button>
 		</td>
       </tr>
     </tbody>

@@ -33,9 +33,9 @@ myapp.controller('loginCtrl', ['$scope', 'Auth','$location','$rootScope', functi
 	});
 	}
 
-	$scope.logout = function() {
-	Auth.$unauth();
-	}
+	// $scope.logout = function() {
+	// Auth.$unauth();
+	// }
 
 
 }]);

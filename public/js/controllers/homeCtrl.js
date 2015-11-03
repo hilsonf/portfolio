@@ -1,8 +1,8 @@
 var myapp= angular.module('myapp')
-myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseArray','$location','$uibModal', function ($scope, $rootScope, $http, Auth, $firebaseArray, $location, $uibModal){
+myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseArray','$location','$uibModal','$routeParams','Upload', function ($scope, $rootScope, $http, Auth, $firebaseArray, $location, $uibModal, $routeParams, $upload){
 	console.log('Home controller in use');
 
-	
+
 	myapp.factory("Auth", function ($firebaseAuth){
 	var ref = new Firebase("https://dailydeals.firebaseio.com/");
 	return $firebaseAuth(ref);
@@ -11,6 +11,30 @@ myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseA
 	var ref = new Firebase('https://dailydeals.firebaseio.com/');
 
 	$scope.artists = $firebaseArray(ref);
+
+
+    $scope.uploadFiles = function(files){
+      $scope.files = files;
+      if (!$scope.files) return;
+      angular.forEach(files, function(file){
+        if (file && !file.$error) {
+          file.upload = $upload.upload({
+            url: "https://api.cloudinary.com/v1_1/" + $.cloudinary.config().cloud_name + "/upload",
+            fields: {
+              upload_preset: $.cloudinary.config().upload_preset,
+              tags: 'myphotoalbum',
+              context: 'photo=' + $scope.title
+            },
+            file: file
+          }).success(function (data, status, headers, config) {
+            $scope.imgUrl = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
+            console.log($scope.imgUrl);
+          }).error(function (data, status, headers, config) {
+          });
+        }
+      });
+    };
+
 
 	$scope.fbLogout = function() {
 		Auth.$unauth();
@@ -21,9 +45,11 @@ myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseA
 		$scope.artists.$add({
 			itemName: $scope.newComment.itemName,
 			itemPrice: $scope.newComment.itemPrice,
+      itemImage: $scope.imgUrl,
 			address: $scope.newComment.address
 		})
 		// $location.path('/dashboard');
+    $scope.alert = { msg: 'Your upload was successful!!'};
 	}
 
 	$scope.removeComment = function(obj){
@@ -81,6 +107,8 @@ var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, ind
 	};
 
 };
+
+
 
 
 

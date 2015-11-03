@@ -1,1 +1,1 @@
-angular.module('myapp', ['ngRoute', 'firebase','ui.bootstrap'])
+angular.module('myapp', ['ngRoute', 'firebase','ui.bootstrap','cloudinary','ngFileUpload'])

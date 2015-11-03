@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hilson Francis",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "bower": "^1.6.5",
+    "gulp": "^3.9.0",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+ 	"cloudinary_ng": "#master"
+  }
+}

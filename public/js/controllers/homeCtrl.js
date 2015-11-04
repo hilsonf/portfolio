@@ -13,49 +13,99 @@ myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseA
 	$scope.artists = $firebaseArray(ref);
 
 
-    $scope.uploadFiles = function(files){
-      $scope.files = files;
-      if (!$scope.files) return;
-      angular.forEach(files, function(file){
-        if (file && !file.$error) {
-          file.upload = $upload.upload({
-            url: "https://api.cloudinary.com/v1_1/" + $.cloudinary.config().cloud_name + "/upload",
-            fields: {
-              upload_preset: $.cloudinary.config().upload_preset,
-              tags: 'myphotoalbum',
-              context: 'photo=' + $scope.title
-            },
-            file: file
-          }).success(function (data, status, headers, config) {
-            $scope.imgUrl = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
-            console.log($scope.imgUrl);
-          }).error(function (data, status, headers, config) {
-          });
-        }
-      });
-    };
-
-
 	$scope.fbLogout = function() {
 		Auth.$unauth();
 		$location.path('/');
 	}
+
+
+  // $scope.uploadFiles = function(files){
+  //   $scope.files = files;
+
+  //   console.log($scope.newComment.img);
+  //   if (!$scope.files) return;
+  //   angular.forEach(files, function(file){
+  //     if (file && !file.$error) {
+  //       file.upload = $upload.upload({
+  //         url: "https://api.cloudinary.com/v1_1/" + $.cloudinary.config().cloud_name + "/upload",
+  //         fields: {
+  //           upload_preset: $.cloudinary.config().upload_preset,
+  //           tags: 'myphotoalbum',
+  //           context: 'photo=' + $scope.title
+  //         },
+  //         file: file
+  //       }).success(function (data, status, headers, config) {
+  //         console.log('SAVED TO cloudinary');
+  //         $scope.imgID = data.public_id;
+  //         $scope.imgUrl = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
+          
+  //         console.log(data.public_id);
+
+  //         console.log($scope.imgUrl);
+  //       }).error(function (data, status, headers, config) {
+  //         console.log('DID NOT SAVE');
+  //       });
+  //     }
+  //   });
+  // };
 	
 	$scope.postComment = function(){
-		$scope.artists.$add({
-			itemName: $scope.newComment.itemName,
-			itemPrice: $scope.newComment.itemPrice,
-      itemImage: $scope.imgUrl,
-			address: $scope.newComment.address
-		})
-		// $location.path('/dashboard');
-    $scope.alert = { msg: 'Your upload was successful!!'};
+    $scope.files = new Array();
+    $scope.files.push($scope.newComment.img);
+
+    console.log($scope.files);
+
+    if (!$scope.files) return;
+    angular.forEach($scope.files, function(file){
+      console.log("loop");
+      if (file && !file.$error) {
+        file.upload = $upload.upload({
+          url: "https://api.cloudinary.com/v1_1/" + $.cloudinary.config().cloud_name + "/upload",
+          fields: {
+            upload_preset: $.cloudinary.config().upload_preset,
+            tags: 'myphotoalbum',
+            context: 'photo=' + $scope.title
+          },
+          file: file
+        }).success(function (data, status, headers, config) {
+          console.log('SAVED TO cloudinary');
+          $scope.imgID = data.public_id;
+          $scope.imgUrl = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
+          
+          console.log(data.public_id);
+
+          console.log($scope.imgUrl);
+          
+          $scope.artists.$add({
+            itemName: $scope.newComment.itemName,
+            itemPrice: $scope.newComment.itemPrice,
+            itemImage: $scope.imgUrl,
+            imageID : $scope.imgID ,
+            address: $scope.newComment.address
+          })
+          // $location.path('/dashboard');
+          $scope.alert = { msg: 'Your upload was successful!!'};
+        }).error(function (data, status, headers, config) {
+          console.log('DID NOT SAVE');
+        });
+      }
+    });
+
+		
 	}
 
 	$scope.removeComment = function(obj){
-		$scope.artists.$remove(obj).then(function (ref){
+
+    console.log('REMOVED::',obj);
+    
+    $http.post('/removeComment',obj);
+		
+    $scope.artists.$remove(obj).then(function (ref){
 			ref.key() === obj.$id; //true
 		});
+
+
+
 	}
 
 

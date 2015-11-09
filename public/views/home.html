@@ -1,4 +1,63 @@
-<h1>Deals</h1>
+  <div class="navbar menubar" id="menu">
+    <div class="container">
+    <div class="navbar-header"> 
+      <button type="button" class="navbar-toggle menu-button" data-toggle="collapse" data-target="#myNavbar">
+      <span class="glyphicon glyphicon-align-justify"></span>
+     </button>
+    <a class="navbar-brand logo" href="#">Flash Deals</a> 
+    </div>
+    <div>
+      <nav class="collapse navbar-collapse" id="myNavbar" role="navigation">
+        <ul class="nav navbar-nav navbar-right navstyle">
+        <li><a class="page-scroll" href="">{{user.facebook.displayName}}</a></li>
+        <li><img class="page-scroll" src="{{user.facebook.profileImageURL}}" alt'avatar'></li> 
+        <li><a ng-click="fbLogout()" href="#" class="page-scroll">Logout</a></li>
+      </ul>
+      </nav>
+      </div>
+  </div>
+  </div>
+
+    <div id="login" class="notes">
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+              <h2>Dashboard</h2>
+          <div class="formContainer">
+              <form ng-submit="postComment();">
+              <div class="form-group col-md-3">
+              <label for="">Item Name</label>
+              <input class="form-control" type="text" ng-model="newComment.itemName" placeholder="Enter Name" />
+              </div>
+
+              <div class="form-group col-md-3">
+              <label for="">Price</label>
+              <input class="form-control" type="number" ng-model="newComment.itemPrice" placeholder="Enter Address" />
+              </div>
+
+              <div class="form-group col-md-3">
+              <label for="">Image Upload</label>
+              <input class="form-control" type="file" ngf-select="uploadFiles($files)" ng-model="newComment.img" />
+              </div>
+
+
+              <div class="form-group col-md-3">
+              <label for="">Adddress</label>
+              <input class="form-control" type="text" ng-model="newComment.address" placeholder="Enter Address" />
+              </div>
+
+              <div class="form-group col-md-4 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-danger">Add</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
 
 <!-- <form>
 <div class="form-group col-lg-6">
@@ -23,87 +82,39 @@
 </div>
 </form> -->
 
-<!-- <div class="col-lg-4">
-<h3>{{user.facebook.displayName}}</h3>
-<img class="thumbnail" src="{{user.facebook.profileImageURL}}" alt'avatar'>
-<button class="btn btn-danger" ng-click="fbLogout()">Logout</button>
-</div> -->
-
-<div class="row col-lg-12">
-<form ng-submit="postComment();">
-<div class="form-group col-lg-4">
-<label for="">Item Name</label>
-<input class="form-control" type="text" ng-model="newComment.itemName" placeholder="Enter Name" autofocus />
-</div>
-
-<div class="form-group col-lg-4">
-<label for="">Price</label>
-<input class="form-control" type="number" ng-model="newComment.itemPrice" placeholder="Enter Address" autofocus />
-</div>
-
-<div class="form-group col-lg-4">
-<label for="">Image Upload</label>
-<input class="form-control" type="file" ngf-select="uploadFiles($files)" ng-model="newComment.img" autofocus />
-</div>
-
-
-<div class="form-group col-lg-4">
-<label for="">Adddress</label>
-<input class="form-control" type="text" ng-model="newComment.address" placeholder="Enter Address" autofocus />
-</div>
-
-<div class="form-group col-lg-4">
-	<button type="submit" class="btn btn-danger">Add</button>
-</div>
-
-</form>
-</div>
-
-<div class="row col-lg-12">
+<div class="container">
+<div class="row">
+<div class="col-12">
 <div ng-if="alert">
   <uib-alert type="success">{{alert.msg}}</uib-alert>
 </div>
-
-<table class="table table-striped" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
-    <thead>
-      <tr>
-        <th>Item Name</th>
-        <th>Price</th>
-        <th>Image</th>
-
-        <th>Address</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{ artist.itemName }} </td>
-        <td>${{ artist.itemPrice }} </td>
-        <td><img class="thumbnail" ng-src="{{ artist.itemImage }}"></td>
-        <td>{{ artist.address }} </td>
-        <td> 
-        	<button class="btn btn-success" ng-click="removeComment(artist)">Remove {{artist.imageID}}</button>
-			 <button class="btn btn-success" ng-click="open(artist, $index)">Open me!</button>
-		</td>
-      </tr>
-    </tbody>
-</table>
+</div>
 </div>
 
-
-
-
-
-
-
-
-
-<!-- <h4>{{ artist.reknown}}</h4>
-<p> {{ artist.bio | limitTo: 140}}
-	{{ artist.bio.length > 140 ? '...' : ''}}
-</p> -->
-
-<!-- <a href="">
-<pre> {{artist | json}}</pre>
-</a> -->
-<!-- </div> -->
+<div class="container">
+<div class="row">
+<div class="col-12" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
+    <div class="form-group col-md-2">
+    <h3>Item Name</h3>
+    <p>{{ artist.itemName }} </p>
+    </div>
+    <div class="form-group col-md-2">
+    <h3>Item Price</h3>
+    <p>${{ artist.itemPrice }} </p>
+    </div>
+    <div class="form-group col-md-2">
+    <h3>Address</h3>
+    <p>{{ artist.address }} </p>
+    </div>
+    <div class="form-group col-md-4">
+    <h3>Item Image</h3>
+    <p><img class="itemImage" ng-src="{{ artist.itemImage }}"></p>
+    </div>
+    <div class="form-group col-md-2">
+    <h3>Action</h3>
+    <button class="btn btn-success" ng-click="removeComment(artist)">Remove</button>
+       <button class="btn btn-success" ng-click="open(artist, $index)">Update</button>
+    </div>
+</div>
+</div>
+</div>

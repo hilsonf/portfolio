@@ -86,8 +86,6 @@ $scope.open = function (artist, index) {
 
 	console.log($scope.editArtist);
 
-  // $http.post('/removeComment',$scope.editArtist);
-
     var modalInstance = $uibModal.open({
       templateUrl: './views/modal.html',
       controller: ModalCtrl,
@@ -118,9 +116,8 @@ var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, ind
   
   	$scope.ok = function () {
 
-      console.log('ITS OK')
       $scope.files = new Array();
-      $scope.files.push($scope.editArtist.img);
+      $scope.files.push($scope.editArtistImg);
       if (!$scope.files) return;
       angular.forEach($scope.files, function(file){
       console.log("loop");
@@ -134,15 +131,13 @@ var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, ind
           },
           file: file
         }).success(function (data) {
-          console.log('SAVED TO cloudinary');
           
-          // $scope.editArtist.imageID   = data.public_id;
           $scope.editArtist.itemImage = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
           $scope.artists[$scope.editArtistIndex] = $scope.editArtist;
 
-          console.log("OLD Artist:",   $scope.artists);
-          console.log("New ARTIST:",  $scope.editArtist);
-          console.log("My Target:", $scope.artists[$scope.editArtistIndex]);
+          // console.log("OLD Artist:",   $scope.artists);
+          // console.log("New ARTIST:",  $scope.editArtist);
+          // console.log("My Target:", $scope.artists[$scope.editArtistIndex]);
           
           $scope.artists.$save($scope.editArtistIndex)
           .then(function (ref){
@@ -154,8 +149,6 @@ var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, ind
         });
       }//file && !file.
     });// angular forEach END
-
-
 
 	    $uibModalInstance.close();
   	};//end OK

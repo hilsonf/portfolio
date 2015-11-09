@@ -1,4 +1,4 @@
-var myapp= angular.module('myapp')
+var myapp = angular.module('myapp')
 myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseArray','$location','$uibModal','$routeParams','Upload', function ($scope, $rootScope, $http, Auth, $firebaseArray, $location, $uibModal, $routeParams, $upload){
 	console.log('Home controller in use');
 
@@ -17,37 +17,6 @@ myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseA
 		Auth.$unauth();
 		$location.path('/');
 	}
-
-
-  // $scope.uploadFiles = function(files){
-  //   $scope.files = files;
-
-  //   console.log($scope.newComment.img);
-  //   if (!$scope.files) return;
-  //   angular.forEach(files, function(file){
-  //     if (file && !file.$error) {
-  //       file.upload = $upload.upload({
-  //         url: "https://api.cloudinary.com/v1_1/" + $.cloudinary.config().cloud_name + "/upload",
-  //         fields: {
-  //           upload_preset: $.cloudinary.config().upload_preset,
-  //           tags: 'myphotoalbum',
-  //           context: 'photo=' + $scope.title
-  //         },
-  //         file: file
-  //       }).success(function (data, status, headers, config) {
-  //         console.log('SAVED TO cloudinary');
-  //         $scope.imgID = data.public_id;
-  //         $scope.imgUrl = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
-          
-  //         console.log(data.public_id);
-
-  //         console.log($scope.imgUrl);
-  //       }).error(function (data, status, headers, config) {
-  //         console.log('DID NOT SAVE');
-  //       });
-  //     }
-  //   });
-  // };
 	
 	$scope.postComment = function(){
     $scope.files = new Array();
@@ -67,7 +36,7 @@ myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseA
             context: 'photo=' + $scope.title
           },
           file: file
-        }).success(function (data, status, headers, config) {
+        }).success(function (data) {
           console.log('SAVED TO cloudinary');
           $scope.imgID = data.public_id;
           $scope.imgUrl = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
@@ -75,7 +44,7 @@ myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseA
           console.log(data.public_id);
 
           console.log($scope.imgUrl);
-          
+
           $scope.artists.$add({
             itemName: $scope.newComment.itemName,
             itemPrice: $scope.newComment.itemPrice,
@@ -115,8 +84,9 @@ $scope.open = function (artist, index) {
 	$scope.editArtist = angular.copy(artist);
 	$scope.editArtistIndex = index;
 
-	console.log(artist);
 	console.log($scope.editArtist);
+
+  // $http.post('/removeComment',$scope.editArtist);
 
     var modalInstance = $uibModal.open({
       templateUrl: './views/modal.html',
@@ -137,20 +107,58 @@ $scope.open = function (artist, index) {
 }]);
 
 ///UPDATE FUNCTION IN MODAL
-var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, index) {
+var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, index, Upload, $routeParams ) {
+
+  $upload = Upload;
 	var ref = new Firebase('https://dailydeals.firebaseio.com/');
 	$scope.artists = $firebaseArray(ref);
 
     $scope.editArtist = angular.copy(artist);
-    $scope.editArtistIndex = index
+    $scope.editArtistIndex = index;
   
   	$scope.ok = function () {
-	  	$scope.artists[$scope.editArtistIndex] = $scope.editArtist;
-		$scope.artists.$save($scope.editArtistIndex).then(function (ref){
-			console.log(ref);
-		});
+
+      console.log('ITS OK')
+      $scope.files = new Array();
+      $scope.files.push($scope.editArtist.img);
+      if (!$scope.files) return;
+      angular.forEach($scope.files, function(file){
+      console.log("loop");
+      if (file && !file.$error) {
+        file.upload = $upload.upload({
+          url: "https://api.cloudinary.com/v1_1/" + $.cloudinary.config().cloud_name + "/upload",
+          fields: {
+            upload_preset: $.cloudinary.config().upload_preset,
+            tags: 'myphotoalbum',
+            context: 'photo=' + $scope.title
+          },
+          file: file
+        }).success(function (data) {
+          console.log('SAVED TO cloudinary');
+          
+          // $scope.editArtist.imageID   = data.public_id;
+          $scope.editArtist.itemImage = 'http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/'+data.public_id+'.'+data.format;
+          $scope.artists[$scope.editArtistIndex] = $scope.editArtist;
+
+          console.log("OLD Artist:",   $scope.artists);
+          console.log("New ARTIST:",  $scope.editArtist);
+          console.log("My Target:", $scope.artists[$scope.editArtistIndex]);
+          
+          $scope.artists.$save($scope.editArtistIndex)
+          .then(function (ref){
+            console.log(ref);
+          });
+
+        }).error(function (data, status, headers, config) {
+          console.log('DID NOT SAVE');
+        });
+      }//file && !file.
+    });// angular forEach END
+
+
+
 	    $uibModalInstance.close();
-  	};
+  	};//end OK
 
 	$scope.cancel = function () {
 	    $uibModalInstance.dismiss('cancel');

@@ -3,7 +3,7 @@
 <head>
 	<base href="/"></base>
 	<meta character="UTF-8">
-	<title></title>
+	<title>Flash Deals</title>
 	<!-- DEPENDENCY -->
 	<script type="text/javascript" src="bower/angular/angular.js"></script>
 	<script type="text/javascript" src="bower/angular-route/angular-route.js"></script>
@@ -19,13 +19,24 @@
 
 	<!-- Angular Resourse -->
 	<script type="text/javascript" src="bower/angular-resource/angular-resource.js"></script>
-
 	<script type="text/javascript" src="bower/cloudinary_ng/js/angular.cloudinary.js"></script>	
 
 	<!-- File to Upload -->
 	<script type="text/javascript" src="bower/ng-file-upload/ng-file-upload.js"></script>
-	
 	<script type="text/javascript" src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+	<!-- RSVP -->
+	<script type="text/javascript" src="js/rsvp.js"></script>
+  	<!-- GEOFIRE -->
+  	<script type="text/javascript" src="bower/geofire/dist/geofire.js"></script>
+		
+	<!-- Low Dash-->
+	<script type="text/javascript" src="bower/lodash/lodash.js"></script>
+	<!-- Simple Logger-->
+	<script type="text/javascript" src="bower/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+	<!-- Google Maps -->
+	<script type="text/javascript" src="bower/angular-google-maps/dist/angular-google-maps.js"></script>
+
 	
 	<!-- MODULES -->
 	<script type="text/javascript" src="js/module.js"></script>
@@ -33,24 +44,31 @@
 	<!-- CONTROLLERS -->
 	<script type="text/javascript" src="js/controllers/loginCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/homeCtrl.js"></script>
+
 	<!-- STYLESHEETS -->
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-
-
-
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,200,100,300,500,600,800,900' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,700italic,900,400italic,300italic' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="js/page/jquery.sticky.js"></script>
-
 </head>
 <body>
 
 		<div ng-view></div>
 	<!-- </div> -->
+	<footer class="foot"> 
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12 col-sm-12 col-xs-12">
+            	<h4 class="foot-logo">Flash Deals</h4>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+            	<p class="foot-text">Copyrights &copy; 2015 | Designed By : Hilson Francis.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

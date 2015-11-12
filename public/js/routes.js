@@ -12,6 +12,11 @@ angular.module('myapp')
 		controller: 'homeCtrl', function ($scope, $http){ 
 		}
 	})
+	.when('/add',{
+		templateUrl: 'views/add.html',
+		controller: 'homeCtrl', function ($scope, $http){ 
+		}
+	})
 	.when('/update',{
 		templateUrl: 'views/update.html',
 		controller: 'homeCtrl', function ($scope, $http){ 

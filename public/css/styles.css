@@ -199,6 +199,14 @@ border-radius: 50%;
 	height: 300px;
 }
 
+.angular-google-map-container { 
+	width:  100%;
+	height: 400px; 
+}
+
+.modal-dialog{
+	width: 80% !important;
+}
 
 
 
@@ -273,7 +281,7 @@ border-radius: 50%;
 	margin: 0px;
 	letter-spacing: 2px;
 }
-.alldesc h2, .notes h2, h2 
+.alldesc h2, .notes h2, h2, .modal-header h2 
 {
     color: #CB5750;
     font-family: "Source Sans Pro",sans-serif;
@@ -453,25 +461,6 @@ figure.effect-Beauty:hover p {
 	-webkit-transform: translate3d(0,0,0) scale(1);
 	transform: translate3d(0,0,0) scale(1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

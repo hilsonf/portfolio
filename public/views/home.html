@@ -18,89 +18,62 @@
   </div>
   </div>
 
-    
-
-<!-- <form>
-<div class="form-group col-lg-6">
-<label for="">Search</label>
-<input class="form-control" type="text" ng-mode="search.txt" placeholder="search here" autofocus />
-</div>
-
-<div class="form-group col-lg-6">
-<label for="">Search</label>
-<select class="form-control" id="" ng-model="search.group">
-<option value="name">Name</option>
-<option value="reknown">Reknown</option>
-</select>
-</div>
-
-<div class="form-group col-lg-6">
-<label for="assending">Assending</label>
-<input type="radio" ng-model="direction" name="direction" id="assending" checked />
-
-<label for="decending">Decending</label>
-<input type="radio" ng-model="direction" name="direction" id="decending" value="reverse">
-</div>
-</form> -->
-
-<div class="container">
-<div class="row">
-<div class="col-12">
-<div>
-<div ng-if="addalert">
-  <uib-alert type="success">{{alert.msg}}</uib-alert>
-</div>
-<!-- <div ng-if="removealert">
-  <uib-alert type="danger">{{alert.msg}}</uib-alert>
-</div> -->
-</div>
-</div>
-</div>
-</div>
-
 <div id="login" class="notes">
     <div class="container">
       <div class="row">
         <div class="col-12">
 
             <h2>Deals</h2>
-              <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="flase" options="{address: m.address}" events="map.events">
+
+            <div class="col-md-6">
+              <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="{address: m.address}" events="map.events">
               <ui-gmap-marker ng-repeat="m in map.markers" show="m.showWindow" options="{address: m.address}" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.$id">
 
-
+              <ui-gmap-window options="windowOptions" closeClick="closeClick()">
+                <div><h3>{{m.address}}</h3></div>
+              </ui-gmap-window>
 
               </ui-gmap-marker>
               </ui-gmap-google-map>
+            </div>
 
-            <pre>{{map.markers|json}}</pre>
+            <pre>{{map.markers|json}}</pre>            
 
+            <div class="col-md-6 itemInfo">
+            <div ng-repeat="m in map.markers">
+
+              <div class="col-md-4"><h3>{{m.itemName}}</h3></div>
+              <div class="col-md-4"><h3>${{m.itemPrice}}</h3></div>
+              <div class="col-md-4"><h3>Distance:</h3> {{distanceData[$index]}}km</div>
+            </div>
+            </div>
         </div>
       </div>
     </div>
 </div>
 
 <div class="container">
-<div class="row col-12" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
-    <div class="form-group col-md-2">
-    <h3>Item Name</h3>
-    <p>{{ artist.itemName }} </p>
-    </div>
-    <div class="form-group col-md-2">
-    <h3>Item Price</h3>
-    <p>${{ artist.itemPrice }} </p>
-    </div>
-    <div class="form-group col-md-2">
-    <h3>Address</h3>
-     <a ng-click="getAddress(artist, $index)" href="#">{{ artist.address }} </a>
-    </div>
-    <div class="form-group col-md-4">
-    <h3>Item Image</h3>
-    <p><img class="itemImage" ng-src="{{ artist.itemImage }}"></p>
-    </div>
-    <div class="form-group col-md-2">
-    <h3>Action</h3>
-    <button class="btn btn-success" ng-click="removeComment(artist)">Remove</button>
-       <button class="btn btn-success" ng-click="open(artist, $index)">Update</button>
-    </div>
-</div>
+  <div class="row col-12" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
+      <div class="form-group col-md-2">
+        <h3>Item Name</h3>
+        <p>{{ artist.itemName }} </p>
+      </div>
+      <div class="form-group col-md-2">
+        <h3>Item Price</h3>
+        <p>${{ artist.itemPrice }} </p>
+      </div>
+      <div class="form-group col-md-2">
+        <h3>Address</h3>
+         <a ng-click="getAddress(artist, $index)" href="#">{{ artist.address }} </a>
+      </div>
+      <div class="form-group col-md-4">
+        <h3>Item Image</h3>
+        <p><img class="itemImage" ng-src="{{ artist.itemImage }}"></p>
+      </div>
+      <div class="form-group col-md-2">
+        <h3>Action</h3>
+        <button class="btn btn-success" ng-click="removeComment(artist)">Remove</button>
+        <button class="btn btn-success" ng-click="open(artist, $index)">Update</button>
+      </div>
+  </div>
 </div>

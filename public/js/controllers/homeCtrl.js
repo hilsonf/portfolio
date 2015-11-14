@@ -1,28 +1,36 @@
 var myapp = angular.module('myapp')
-myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseArray', '$firebaseObject', '$location','$uibModal','$routeParams','Upload', function ($scope, $rootScope, $http, Auth, $firebaseArray, $firebaseObject, $location, $uibModal, $routeParams, $upload){
+  myapp.controller('homeCtrl', ['$scope','$rootScope', '$http','$firebaseArray', '$firebaseObject', '$location','$uibModal','$routeParams','Upload','$firebaseAuth', function ($scope, $rootScope, $http, $firebaseArray, $firebaseObject, $location, $uibModal, $routeParams, $upload, $firebaseAuth){
 	console.log('Home controller in use');
-
-
-  	myapp.factory("Auth", function ($firebaseAuth){
-  	var ref = new Firebase("https://dailydeals.firebaseio.com/");
-  	return $firebaseAuth(ref);
-  	});
 
   	var georef = new Firebase('https://dailydeals.firebaseio.com/geoFire');
     var geoFire = new GeoFire(georef);
     
     var ref = new Firebase('https://dailydeals.firebaseio.com/deals');
-  	$scope.artists = $firebaseArray(ref);
+    var refauth = new Firebase('https://dailydeals.firebaseio.com/users');
+  	
+    $scope.artists = $firebaseArray(ref);
 
-    //Logout 
+    $scope.authObj = $firebaseAuth(ref);
+
+    $scope.authObj.$onAuth(function(authData){
+      console.log('authData',authData);
+
+      if(authData){
+        console.log('you belong');
+      }else {
+          $location.path('/');
+      };
+    });
+
   	$scope.fbLogout = function() {
-  		Auth.$unauth();
+  		$scope.authObj.$unauth();
   		$location.path('/');
   	}
 
     var getLocation = function() {
       if (typeof navigator !== "undefined" && typeof navigator.geolocation !== "undefined") {
         navigator.geolocation.getCurrentPosition(geolocationCallback);
+
 
       } else {
       }
@@ -33,6 +41,7 @@ myapp.controller('homeCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseA
 var geolocationCallback = function(location) {
     $rootScope.latitude = location.coords.latitude;
     $rootScope.longitude = location.coords.longitude;
+
 
     var lat = Number($rootScope.latitude); 
     var lng = Number($rootScope.longitude);
@@ -45,11 +54,9 @@ var geolocationCallback = function(location) {
     $scope.mapData = [];
     $scope.distanceData = [];
     geoQuery.on("key_entered", function(key, location, distance) {
-    // console.log("Bicycle shop " + key + " found at " + location + " (" + distance + " km away)");
-       
       var ref = new Firebase('https://dailydeals.firebaseio.com/deals/'+key);
       $scope.singlePlace = $firebaseObject(ref);
-      $scope.distanceData.push(distance);
+      $scope.distanceData.push(distance.toFixed(2));
       $scope.mapData.push($scope.singlePlace);
       console.log('Map DATA::',$scope.mapData);    
     });
@@ -106,8 +113,6 @@ $scope.open = function (artist, index) {
 
 	$scope.editArtist = angular.copy(artist);
 	$scope.editArtistIndex = index;
-
-	// console.log($scope.editArtist);
 
     var modalInstance = $uibModal.open({
       templateUrl: './views/modal.html',

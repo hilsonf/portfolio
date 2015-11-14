@@ -1,5 +1,5 @@
 var myapp = angular.module('myapp')
-myapp.controller('dealsCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebaseArray', '$firebaseObject', '$location','$uibModal','$routeParams','Upload', function ($scope, $rootScope, $http, Auth, $firebaseArray, $firebaseObject, $location, $uibModal, $routeParams, $upload){
+myapp.controller('dealsCtrl', ['$scope','$rootScope', '$http','$firebaseArray', '$firebaseObject', '$location','$uibModal','$routeParams','Upload','$firebaseAuth', function ($scope, $rootScope, $http, $firebaseArray, $firebaseObject, $location, $uibModal, $routeParams, $upload, $firebaseAuth){
 	
 
 	var georef = new Firebase('https://dailydeals.firebaseio.com/geoFire');
@@ -8,12 +8,13 @@ myapp.controller('dealsCtrl', ['$scope','$rootScope', '$http', 'Auth','$firebase
   var ref = new Firebase('https://dailydeals.firebaseio.com/deals');
 	$scope.artists = $firebaseArray(ref);
 
-  //Logout 
-  $scope.fbLogout = function() {
-    Auth.$unauth();
-    $location.path('/');
-  }
+  var refauth = new Firebase('https://dailydeals.firebaseio.com');
+  $scope.authObj = $firebaseAuth(refauth);
 
+  $scope.fbLogout = function() {
+      $scope.authObj.$unauth();
+      $location.path('/');
+    }
 
 $scope.postComment = function(){
 

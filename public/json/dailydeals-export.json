@@ -1,0 +1,28 @@
+{
+  "deals" : {
+    "-K31fNuh03OMOBRDexp3" : {
+      "address" : "zdfwefw",
+      "imageID" : "uploads/hjjcwzyhwcrqhfjmmmks",
+      "itemImage" : "http://res.cloudinary.com/dxrthhmgz/image/upload/v1446508534/uploads/hjjcwzyhwcrqhfjmmmks.jpg",
+      "itemName" : "sDzfgqewadf",
+      "itemPrice" : 45,
+      "latitude" : 28.5947243,
+      "longitude" : -81.3042605
+    }
+  },
+  "geoFire" : {
+    "-K31fNuh03OMOBRDexp3" : {
+      ".priority" : "djn4tvs036",
+      "g" : "djn4tvs036",
+      "l" : [ 28.5947243, -81.3042605 ]
+    }
+  },
+  "users" : {
+    "displayName" : "Hilson Francis",
+    "facebook:10153466529383834" : {
+      "displayName" : "Hilson Francis",
+      "profileImg" : "https://scontent.xx.fbcdn.net/hprofile-xaf1/v/t1.0-1/p100x100/984036_10152378373628834_8409743654964650845_n.jpg?oh=e4352e6c474790dffbf515da6efc88c9&oe=56B4E6C4"
+    },
+    "profileImg" : "https://scontent.xx.fbcdn.net/hprofile-xaf1/v/t1.0-1/p100x100/984036_10152378373628834_8409743654964650845_n.jpg?oh=e4352e6c474790dffbf515da6efc88c9&oe=56B4E6C4"
+  }
+}

@@ -208,6 +208,9 @@ border-radius: 50%;
 	width: 80% !important;
 }
 
+.modal-footer {
+    background: #3EC9C3
+}
 
 
 
@@ -328,9 +331,6 @@ border-radius: 50%;
 }
 
 
-
-
-
 #galleryimg .mix{
 	display: none;
 }
@@ -400,6 +400,7 @@ border-radius: 50%;
 
 .grid figure h2 span {
 	font-weight: 800;
+	font-size: 30px;
 }
 
 .grid figure h2,
@@ -410,6 +411,10 @@ border-radius: 50%;
 .grid figure p {
 	letter-spacing: 1px;
 	font-size: 68.5%;
+}
+.grid figure p span {
+	font-weight: 800;
+	font-size: 2em;
 }
 
 
@@ -442,8 +447,7 @@ figure.effect-Beauty h2 {
 
 figure.effect-Beauty p {
 	margin: 1em 0 0;
-	padding: 15px;
-	border: 1px solid #fff;
+	padding: 10px;
 	opacity: 0;
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
@@ -460,6 +464,12 @@ figure.effect-Beauty:hover p {
 	opacity: 1;
 	-webkit-transform: translate3d(0,0,0) scale(1);
 	transform: translate3d(0,0,0) scale(1);
+}
+
+figure.effect-Beauty a{
+	font-weight: 400;
+	font-size: 1.5em;
+	color: #fff;
 }
 
 
@@ -479,16 +489,6 @@ figure.effect-Beauty:hover p {
 	font-weight: 400;
 	font-size: 18px;
 	margin: 0px;
-}
-.notes button
-{
-	display: inline-block;
-	border: medium none;
-	background-color: #3EC9C3;
-	padding: 12px 38px;
-	color: #fff;
-	border-radius: 4px;
-	font-size: 20px;
 }
 
 /*------------------------------------------/
@@ -536,7 +536,14 @@ figure.effect-Beauty:hover p {
 	margin: 0px 0px 10px !important;
 	font-family: 'Raleway', sans-serif;
 }
+.add{
+	margin-top: 2%; 
+}
 
+.add button{
+	font-weight: 800;
+	color: #eb7261;
+}
 
 
 
@@ -544,6 +551,70 @@ figure.effect-Beauty:hover p {
 /-----------------Team----------------------/
 /------------------------------------------*/
 
+/* Common button styles */
+.button {
+	min-width: 150px;
+	max-width: 250px;
+	display: block;
+	margin: 10px auto;
+	padding: 1em 2em;
+	border: 1px solid #FFF;
+	background: none;
+	color: inherit;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+}
+.button:focus {
+	outline: none;
+}
+.button > span {
+	vertical-align: middle;
+}
+
+.button--ujarak::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #eb7261;
+	z-index: -1;
+	opacity: 0;
+	-webkit-transform: scale3d(0.7, 1, 1);
+	transform: scale3d(0.7, 1, 1);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+	transition: transform 0.4s, opacity 0.4s;
+	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--ujarak.button--round-s::before {
+	border-radius: 2px;
+}
+.button--ujarak.button--inverted::before {
+	background: #7986CB;
+}
+.button--ujarak,
+.button--ujarak::before {
+	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--ujarak:hover {
+	color: #fff;
+	border-color: #eb7261;
+}
+.button--ujarak.button--inverted:hover {
+	color: #fff;
+	border-color: #eb7261;
+}
+.button--ujarak:hover::before {
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
 
 
 

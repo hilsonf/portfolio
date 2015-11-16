@@ -1,11 +1,11 @@
 
 var myapp = angular.module('myapp');
-myapp.controller('loginCtrl', ['$scope', '$rootScope','$firebaseObject', '$firebaseAuth','$location','$rootScope', function ($scope, $rootScope, $firebaseObject, $firebaseAuth, $location, $rootScope ){
+myapp.controller('loginCtrl', ['$scope', '$rootScope','$firebaseObject', '$firebaseAuth','$firebaseArray','$location','$rootScope', function ($scope, $rootScope, $firebaseObject, $firebaseAuth, $firebaseArray, $location, $rootScope ){
 
-var ref = new Firebase("https://dailydeals.firebaseio.com");
-
+var ref = new Firebase("https://dailydeals.firebaseio.com/deals");
 var user = $firebaseObject(new Firebase("https://dailydeals.firebaseio.com/users/"));
 
+$scope.artists = $firebaseArray(ref);
 $scope.authObj = $firebaseAuth(ref);
 
 $scope.authObj.$onAuth(function(authData){
@@ -22,20 +22,14 @@ $scope.authObj.$onAuth(function(authData){
 	 	}else{
 	 		$location.path('/');
 	 	}
-	 }else if(authData === null){
-	 		$location.path('/');
-	 		console.log('Not logged in');
-	 }
-
+	}
 });
 
 $scope.fbLogin = function(){
 
 $scope.authObj.$authWithOAuthPopup("facebook").then(function(authData) {
-  console.log("Logged in as:", authData.uid);
   $rootScope.user = authData;
 }).catch(function(error) {
-  console.error("Authentication failed:", error);
 });
 
 }

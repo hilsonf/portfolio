@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-12">
 
-            <h2>Deals</h2>
+            <h2>Deals Near You</h2>
 
             <div class="col-md-6">
               <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="{address: m.address}" events="map.events">
@@ -50,28 +50,27 @@
     </div>
 </div>
 
-<div class="container">
-  <div class="row col-12" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
-      <div class="form-group col-md-2">
-        <h3>Item Name</h3>
-        <p>{{ artist.itemName }} </p>
-      </div>
-      <div class="form-group col-md-2">
-        <h3>Item Price</h3>
-        <p>${{ artist.itemPrice }} </p>
-      </div>
-      <div class="form-group col-md-2">
-        <h3>Address</h3>
-         <a ng-click="getAddress(artist, $index)" href="#">{{ artist.address }} </a>
-      </div>
-      <div class="form-group col-md-4">
-        <h3>Item Image</h3>
-        <p><img class="itemImage" ng-src="{{ artist.itemImage }}"></p>
-      </div>
-      <div class="form-group col-md-2">
-        <h3>Action</h3>
-        <button class="btn btn-success" ng-click="removeComment(artist)">Remove</button>
-        <button class="btn btn-success" ng-click="open(artist, $index)">Update</button>
-      </div>
+<div class="gallery" id="gallery">
+    <div class="container">
+    <div class="row">
+        <h2>Deals</h2>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
+          <figure class="effect-Beauty">
+            <img class="itemImage" ng-src="{{ artist.itemImage }}"/>
+            <figcaption>
+              <h2>{{ artist.itemName }}</h2>
+              <p><span>${{ artist.itemPrice }}</span></p>
+              <p>
+              <a ng-click="getAddress(artist, $index)">Map</a>
+              <button class="button button--ujarak button--border-thin button--text-thick" ng-click="open(artist, $index)">Update</button>
+              <button class="button button--ujarak button--border-thin button--text-thick" ng-click="removeComment(artist)">Remove</button>
+              </p>
+            </figcaption>     
+          </figure>
+          </div>        
+     </div>
   </div>
 </div>
+</div>
+

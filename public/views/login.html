@@ -24,120 +24,31 @@
         <h2>Login with Facebook</h2>
       </div>
         <div class="col-md-3 col-sm-2 col-xs-12 text-center">
-        <button ng-click="fbLogin()">Login</button>
+        <button ng-click="fbLogin()" class="button button--ujarak button--border-thin button--text-thick">Login With Facebook</button>
       </div>
       </div>
   </div>
   </div>
-<div class="gallery" id="gallery">
+
+  <div class="gallery" id="gallery">
     <div class="container">
     <div class="row">
+        <h2>Deals Happening Now</h2>
         <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="alldesc">
-            <div class="col-md-6 col-sm-6 col-xs-12 centertext">
-            <p class="all-td">Our preciously done works</p>
-            <h2>Gallery</h2>
-          </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a suscipit nisl. Etiam a facilisis ante. Sed turpis felis, sagittis at risus ut, luctus feugiat ipsum. Lorem ipsum dolor sit amet.</p>
-          </div>
-          </div>
-      </div>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash004.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Glowing <span>Sun<span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6" data-myorder="2">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash009.jpg" alt="img13"/>
-						<figcaption>
-							<h2>High <span>Sky</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6" data-myorder="3">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash0010.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Darkest <span>Rain</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" data-myorder="4">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash002.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Beautiful <span>Heart</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" data-myorder="5">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash006.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Cute <span>Imagine</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6" data-myorder="6">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash004.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Glowing <span>Sun</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" data-myorder="7">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash0010.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Darkest <span>Rain</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6" data-myorder="8">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash002.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Beautiful <span>Heart</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
-           <div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6" data-myorder="9">
-					<figure class="effect-Beauty">
-						<img src="img/unsplash004.jpg" alt="img13"/>
-						<figcaption>
-							<h2>Glowing <span>Sun</span></h2>
-							<p>Beauty did not need any help. Everybody knew that.</p>
-							<a href="#">View more</a>
-						</figcaption>			
-					</figure>
-          </div>
+            <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
+          <figure class="effect-Beauty">
+            <img class="itemImage" ng-src="{{ artist.itemImage }}"/>
+            <figcaption>
+              <h2>{{ artist.itemName }}</h2>
+              <p>Login to view more details of this product :)</p>
+            </figcaption>     
+          </figure>
+          </div>        
      </div>
   </div>
-  </div>
-  </div>
+</div>
+</div>
+ 
 
 <div class="about" id="about">
     <div class="container">
@@ -149,7 +60,7 @@
             <h2>About Us</h2>
           </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
-            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a suscipit nisl. Etiam a facilisis ante. Sed turpis felis, sagittis at risus ut, luctus feugiat ipsum. Lorem ipsum dolor sit amet.</p>
+            <p class="desc">This application gives the user to Deals Provides us with user generated deals in your immediate area</p>
           </div>
           </div>
       </div>

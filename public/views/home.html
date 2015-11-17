@@ -21,11 +21,11 @@
 <div id="login" class="notes">
     <div class="container">
       <div class="row">
-        <div class="col-12">
-
-            <h2>Deals Near You</h2>
-
-            <div class="col-md-6">
+            
+            <div class="col-md-12">
+              <h2>Deals Near You</h2>
+            </div>
+            <div class="col-md-8">
               <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="{address: m.address}" events="map.events">
               <ui-gmap-marker ng-repeat="m in map.markers" show="m.showWindow" options="{address: m.address}" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.$id">
 
@@ -37,15 +37,16 @@
               </ui-gmap-google-map>
             </div>
 
-            <div class="col-md-6 itemInfo">
-            <div ng-repeat="m in map.markers">
+            <div class="col-md-4 itemInfo">
+            <ul ng-repeat="m in map.markers" class="list-group">
+              <li class="list-group-item">
+                <div class="row">
+                <div class="col-md-12"><h3>{{m.itemName}}</h3> <h6>Distance: {{distanceData[$index]}}km</h6></div>
+                </div>
+              </li>
+            </ul>
+            </div>
 
-              <div class="col-md-4"><h3>{{m.itemName}}</h3></div>
-              <div class="col-md-4"><h3>${{m.itemPrice}}</h3></div>
-              <div class="col-md-4"><h3>Distance:</h3> {{distanceData[$index]}}km</div>
-            </div>
-            </div>
-        </div>
       </div>
     </div>
 </div>
@@ -53,7 +54,7 @@
 <div class="gallery" id="gallery">
     <div class="container">
     <div class="row">
-        <h2>Deals</h2>
+        <h2 id="galHeading">Deals</h2>
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
           <figure class="effect-Beauty">

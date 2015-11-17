@@ -212,7 +212,9 @@ border-radius: 50%;
     background: #3EC9C3
 }
 
-
+.list-group-item .row .col-md-12{
+	text-align: center;
+}
 
 
 
@@ -272,7 +274,7 @@ border-radius: 50%;
 
 .gallery
 {
-	padding: 100px 0px;
+	padding: 60px 0px;
 }
 .all-td
 {
@@ -410,7 +412,8 @@ border-radius: 50%;
 
 .grid figure p {
 	letter-spacing: 1px;
-	font-size: 68.5%;
+	font-family: "Source Sans Pro",sans-serif;
+	font-size: 65.6%;
 }
 .grid figure p span {
 	font-weight: 800;
@@ -438,7 +441,12 @@ figure.effect-Beauty:hover img {
 }
 
 figure.effect-Beauty h2 {
-	margin-top: 20%;
+	margin-top: 10%;
+	font-family: 'Raleway', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
 	-webkit-transform: translate3d(0,20px,0);
@@ -480,7 +488,7 @@ figure.effect-Beauty a{
 .notes
 {
 	background-color: rgba(0, 0, 0, 0.1);
-	padding: 100px 0px;
+	padding: 60px 0px;
 }
 .notes p
 {
@@ -489,6 +497,9 @@ figure.effect-Beauty a{
 	font-weight: 400;
 	font-size: 18px;
 	margin: 0px;
+}
+.notes h2{
+	margin-bottom: 2.5%;
 }
 
 /*------------------------------------------/
@@ -500,42 +511,12 @@ figure.effect-Beauty a{
 	padding: 100px 0px;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
-.progresscount
-{
-	margin-top: 60px;
-}
-.progress-style
-{
-    background-color: rgba(0,0,0, 0.06) !important;
-    box-shadow: none !important;
-    border-radius: 10px !important;
-}
-.progress-bar
-{
-	background-color: #45AACB !important;
-}
-.counter-item h5
-{
-	margin: 0px !important;
-	font-family: 'Raleway', sans-serif;
-}
-.timer
-{
-	color: #45aacb;
-	font-family: "Source Sans Pro",sans-serif;
-	font-size: 50px;
-	font-weight: 600;
-}
 .block
 {
 	padding-left: 0px !important;
 }
 
-.progresstitle h5
-{
-	margin: 0px 0px 10px !important;
-	font-family: 'Raleway', sans-serif;
-}
+
 .add{
 	margin-top: 2%; 
 }
@@ -617,9 +598,6 @@ figure.effect-Beauty a{
 }
 
 
-
-
-
 /*------------------------------------------/
 /-----------------Subscribe------------------/
 /------------------------------------------*/
@@ -677,10 +655,6 @@ figure.effect-Beauty a{
 	color: #3EC9C3;	
 }
 
-
-
-
-
 @media (min-width: 200px) and (max-width: 767px) {
 .navstyle{
 	width: 100% !important;
@@ -703,9 +677,6 @@ text-align: center;
 margin-top: 20px;
 display: inline-block;
 }
-.social {
-    margin-top: 10px;
-}
 .menu-button {
 
     padding: 8px 10px !important;
@@ -724,10 +695,6 @@ figure.effect-Beauty p {
 .features, .about, .notes, .testimonials, .address, .gallery{
 padding: 40px 0px;
 	}
-}
-@media (min-width: 768px) and (max-width: 990px) {
-.social {
-    margin-top: 10px;
 }
 .notes button {
     padding: 14px 19px;

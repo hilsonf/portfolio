@@ -21,6 +21,7 @@
     <div class="container">
     <div class="row">
         <div class="col-md-9 col-sm-10 col-12">
+        <p class="all-td">Login through facebook and start saving.</p>
         <h2>Login with Facebook</h2>
       </div>
         <div class="col-md-3 col-sm-2 col-xs-12 text-center">
@@ -33,13 +34,14 @@
   <div class="gallery" id="gallery">
     <div class="container">
     <div class="row">
-        <h2>Deals Happening Now</h2>
+        <p class="all-td">Get all the deals around you.</p>
+        <h2>Current Deals</h2>
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
           <figure class="effect-Beauty">
             <img class="itemImage" ng-src="{{ artist.itemImage }}"/>
             <figcaption>
-              <h2>{{ artist.itemName }}</h2>
+              <h3>{{ artist.itemName }}</h3>
               <p>Login to view more details of this product :)</p>
             </figcaption>     
           </figure>

@@ -286,9 +286,9 @@ border-radius: 50%;
 	margin: 0px;
 	letter-spacing: 2px;
 }
-.alldesc h2, .notes h2, h2, .modal-header h2 
+h2, .notes h2, .modal-header h2 
 {
-    color: #CB5750;
+    color: #CB5750!important;
     font-family: "Source Sans Pro",sans-serif;
     font-size: 40px;
     margin-top: 0px !important;
@@ -440,7 +440,7 @@ figure.effect-Beauty:hover img {
 	transform: scale(1);
 }
 
-figure.effect-Beauty h2 {
+figure.effect-Beauty h3 {
 	margin-top: 10%;
 	font-family: 'Raleway', sans-serif;
 	font-size: 22px;
@@ -454,7 +454,6 @@ figure.effect-Beauty h2 {
 }
 
 figure.effect-Beauty p {
-	margin: 1em 0 0;
 	padding: 10px;
 	opacity: 0;
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;

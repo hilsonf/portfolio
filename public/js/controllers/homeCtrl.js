@@ -1,6 +1,5 @@
 var myapp = angular.module('myapp')
   myapp.controller('homeCtrl', ['$scope','$rootScope', '$http','$firebaseArray', '$firebaseObject', '$location','$uibModal','$routeParams','Upload','$firebaseAuth', function ($scope, $rootScope, $http, $firebaseArray, $firebaseObject, $location, $uibModal, $routeParams, $upload, $firebaseAuth){
-	console.log('Home controller in use');
 
   	var georef = new Firebase('https://dailydeals.firebaseio.com/geoFire');
     var geoFire = new GeoFire(georef);
@@ -13,7 +12,6 @@ var myapp = angular.module('myapp')
     $scope.authObj = $firebaseAuth(ref);
 
     $scope.authObj.$onAuth(function(authData){
-      console.log('authData',authData);
 
       if(authData){
         console.log('you belong');
@@ -58,7 +56,6 @@ var geolocationCallback = function(location) {
       $scope.singlePlace = $firebaseObject(ref);
       $scope.distanceData.push(distance.toFixed(2));
       $scope.mapData.push($scope.singlePlace);
-      console.log('Map DATA::',$scope.mapData);    
     });
 
       angular.extend($scope, {
@@ -98,10 +95,8 @@ var geolocationCallback = function(location) {
 		});
 
     geoFire.remove(obj.$id).then(function() {
-    console.log("Provided key has been removed from GeoFire");
     $scope.mapData.splice(obj.$id, 1);
-    console.log('Shit works',$scope.mapData);
-  }, function(error) {
+   }, function(error) {
     console.log("Error: " + error);
   });
     
@@ -169,11 +164,9 @@ var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, ind
   	$scope.ok = function () {
 
       if($scope.editArtistImg === undefined){
-        console.log("No IMG");
         save();
 
       }else if($scope.editArtistImg){
-        console.log("IMG true", $scope.editArtistImg);
 
         $scope.files = new Array();
         $scope.files.push($scope.editArtistImg);
@@ -220,17 +213,15 @@ var ModalCtrl = function ($firebaseArray, $scope, $uibModalInstance, artist, ind
 
 
 var mapCtrl = function($scope, $uibModalInstance, $firebaseArray, $location, artist, index) {
-   
-    var ref = new Firebase('https://dailydeals.firebaseio.com/deals');
-    $scope.artists = $firebaseArray(ref);
 
+    var lat = Number(artist.latitude);
+    var lon = Number(artist.longitude);
     artist.id = index;
-
     angular.extend($scope, {
         map: {
             center: {
-                latitude: 28.538335,
-                longitude: -81.379236
+                latitude: lat,
+                longitude: lon
             },
             zoom: 11,
             markers: [artist]

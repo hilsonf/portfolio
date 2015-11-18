@@ -153,7 +153,7 @@
 }
 .logo
 {
-	padding: 24px 15px !important;
+	padding: 10px 15px !important;
 	display: inline-block;
 	height: auto !important;
 	font-family: 'Pacifico', cursive;
@@ -216,7 +216,10 @@ border-radius: 50%;
 	text-align: center;
 }
 
-
+.itemInfo{
+	overflow: auto;
+	height: 400px;
+}
 
 /*------------------------------------------/
 /-----------------Features------------------/
@@ -360,7 +363,7 @@ h2, .notes h2, .modal-header h2
 	position: relative;
 	display: block;
 	min-height: 100%;
-	max-width: 100%;
+	width: 100%;
 	opacity: 0.8;
 }
 
@@ -423,6 +426,7 @@ h2, .notes h2, .modal-header h2
 
 figure.effect-Beauty{
 	background-color: #17819c;
+	width: 100%;
 }
 
 figure.effect-Beauty img {
@@ -431,7 +435,7 @@ figure.effect-Beauty img {
 	transition: opacity 0.35s, transform 0.35s;
 	-webkit-transform: scale(1.15);
 	transform: scale(1.15);
-	width: 100%;
+	 
 }
 
 figure.effect-Beauty:hover img {
@@ -441,7 +445,7 @@ figure.effect-Beauty:hover img {
 }
 
 figure.effect-Beauty h3 {
-	margin-top: 10%;
+	margin-top: 0%;
 	font-family: 'Raleway', sans-serif;
 	font-size: 22px;
 	font-weight: 400;
@@ -540,7 +544,7 @@ figure.effect-Beauty a{
 	padding: 1em 2em;
 	border: 1px solid #FFF;
 	background: none;
-	color: inherit;
+	color: #fff;
 	vertical-align: middle;
 	position: relative;
 	z-index: 1;

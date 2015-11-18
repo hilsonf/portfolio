@@ -46,18 +46,12 @@ $scope.postComment = function(){
             longitude: $rootScope.longitude 
           }).then(function(ref) {
             var id = ref.key();
-            console.log("added record with id " + id);
-            //list.$indexFor(id); // returns location in the array
             geoFire.set(id, [$rootScope.latitude, $rootScope.longitude]).then(function() {
-              console.log("GeoFire Saved at", id);
             }).catch(function(error) {
-             console.log("Error adding location to GeoFire");
           });
           });
-
 
           $location.path('/dashboard');
-   
           //Alerts User       
           $scope.addalert = { msg: 'Your upload was successful..'};
         }).error(function (data, status, headers, config) {

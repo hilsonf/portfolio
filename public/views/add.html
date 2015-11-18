@@ -28,23 +28,22 @@
               <form ng-submit="postComment();">
               <div class="form-group col-md-3">
               <label for="">Item Name</label>
-              <input class="form-control" type="text" ng-model="newComment.itemName" placeholder="Enter Deal Name" />
+              <input class="form-control" type="text" ng-model="newComment.itemName" placeholder="Enter Deal Name" required/>
               </div>
 
               <div class="form-group col-md-3">
               <label for="">Price</label>
-              <input class="form-control" type="number" ng-model="newComment.itemPrice" placeholder="Enter Address" />
+              <input class="form-control" type="number" ng-model="newComment.itemPrice" placeholder="Enter Address" required/>
               </div>
 
               <div class="form-group col-md-3">
               <label for="">Image Upload</label>
-              <input class="form-control" type="file" ngf-select="uploadFiles($files)" ng-model="newComment.img" />
+              <input class="form-control" type="file" ngf-select="uploadFiles($files)" ng-model="newComment.img" required/>
               </div>
-
 
               <div class="form-group col-md-3">
               <label for="">Adddress</label>
-              <input class="form-control" type="text" ng-model="newComment.address" placeholder="Enter Address" />
+              <input class="form-control" type="text" ng-model="newComment.address" placeholder="Enter Address" required/>
               </div>
 
               <div class="form-group add col-md-12 col-sm-12 col-xs-12">

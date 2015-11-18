@@ -4,7 +4,7 @@
       "address"   : "string",
       "imageID"   : "string",
       "itemImage" : "string",
-      "itemName"  : "sDzfgqewadf",
+      "itemName"  : "string",
       "itemPrice" : "number",
       "latitude"  : "number",
       "longitude" : "number"

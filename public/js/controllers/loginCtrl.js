@@ -9,7 +9,6 @@ $scope.artists = $firebaseArray(ref);
 $scope.authObj = $firebaseAuth(ref);
 
 $scope.authObj.$onAuth(function(authData){
-	console.log('authData',authData);
 
 	if(authData){
 	 	var user = $firebaseObject(new Firebase("https://dailydeals.firebaseio.com/users/"+authData.uid));
@@ -33,9 +32,6 @@ $scope.authObj.$authWithOAuthPopup("facebook").then(function(authData) {
 });
 
 }
-
-
-
 
 }]);
 

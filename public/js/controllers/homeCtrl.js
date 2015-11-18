@@ -9,12 +9,14 @@ var myapp = angular.module('myapp')
   	
     $scope.artists = $firebaseArray(ref);
 
+    console.log($scope.artists);
+
     $scope.authObj = $firebaseAuth(ref);
 
     $scope.authObj.$onAuth(function(authData){
 
       if(authData){
-        console.log('you belong');
+        $rootScope.user = authData;
       }else {
           $location.path('/');
       };

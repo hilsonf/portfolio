@@ -30,8 +30,7 @@
     <div>
     	<nav class="collapse navbar-collapse" id="myNavbar" role="navigation">
         <ul class="nav navbar-nav navbar-right navstyle">
-        <li><a href="#banner" class="page-scroll active">Home</a></li>
-        <li><a href="#gallery" class="page-scroll">Gallery</a></li>
+        <li><a href="#deals" class="page-scroll">Deals</a></li>
       </ul>
       </nav>
       </div>
@@ -41,7 +40,7 @@
   <div id="login" class="notes">
     <div class="container">
     <div class="row">
-        <div class="col-md-9 col-sm-10 col-12">
+        <div class="col-md-9 col-sm-10 col-12 centertext">
         <h2>Login with Facebook</h2>
         <p class="all-td">Login through facebook and start saving</p>
       </div>
@@ -52,12 +51,14 @@
   </div>
   </div>
 
-  <div class="gallery" id="gallery">
+  <div class="gallery" id="deals">
     <div class="container">
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-6 col-sm-6 col-xs-12 centertext">
+        <div class="alldesc">
         <p class="all-td">Get all the deals around you.</p>
         <h2>Current Deals</h2>
+        </div>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6" ng-repeat="artist in artists | filter: search.txt | orderBy: search.group:direction">
@@ -87,11 +88,6 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
             <p class="desc">This application gives the user to Deals Provides us with user generated deals in your immediate area</p>
           </div>
-          </div>
-      </div>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="progresscount">
- 
           </div>
       </div>
       </div>

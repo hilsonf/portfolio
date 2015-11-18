@@ -125,37 +125,7 @@
 	font-family: 'Raleway', sans-serif;
 	font-weight: 700;
 }
-.spanstyle
-{
-	color: #dd068f;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-}
-.spanstyle2
-{
-	color: #000;
-}
-.typed-cursor{
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
-}
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
-}
+
 .menubar
 {
 	margin-bottom: 0px !important;
@@ -360,6 +330,8 @@ h2, .notes h2, .modal-header h2
 	font-size: 65.6%;
 }
 .grid figure p span {
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
 	font-weight: 800;
 	font-size: 2em;
 }
@@ -423,6 +395,11 @@ figure.effect-Beauty a{
 	font-size: 1.5em;
 	color: #fff;
 }
+figure.effect-Beauty a:hover{
+	font-weight: 400;
+	color: #EB7263;
+	text-decoration: none;
+}
 
 
 
@@ -469,8 +446,6 @@ figure.effect-Beauty a{
 	font-weight: 800;
 	color: #eb7261;
 }
-
-
 
 /*------------------------------------------/
 /-----------------Team----------------------/
@@ -632,10 +607,10 @@ figure.effect-Beauty h2 {
     margin-top: 15%;
     font-size: 16px;
 }
-figure.effect-Beauty p {
-    padding: 6px;
-	display: none;
-	}
+.col-xs-6{
+	width: 100% !important;
+}
+
 .features, .about, .notes, .testimonials, .address, .gallery{
 padding: 40px 0px;
 	}

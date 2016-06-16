@@ -1,9 +1,0 @@
-{
-  "firebase": "dailydeals",
-  "public": "public",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ]
-}

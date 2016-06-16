@@ -1,0 +1,32 @@
+<section>
+<div class="cd-slider-wrapper" >
+		<ul class="cd-slider" >
+			<li class="visible">
+				<div class="cd-svg-wrapper" ng-repeat="image in images" ng-show="image.visible">
+						    <img clip-path="url(#cd-image-1)" ng-src="img/{{image.src}}"/>
+					<p>{{image.title}}</p>
+				</div> <!-- .cd-svg-wrapper -->
+			</li>			
+		</ul> <!-- .cd-slider -->
+
+		<ul class="cd-slider-navigation">
+			<li><a href="#" ng-click="next()" class="next-slide">Next</a></li>
+			<li><a href="#" ng-click="prev()" class="prev-slide">Prev</a></li>
+		</ul> <!-- .cd-slider-navigation -->
+
+		<ol class="cd-slider-controls" >
+			<li ng-repeat="image in images" ng-class="{selected: $index==selectedIndex}">
+				<a href="#" ng-click="select($index)"><em>{{images}}</em></a>
+
+			</li>
+		</ol> 
+
+<!-- 		<pre>{{images|json}}</pre> -->
+
+
+	</div> <!-- .cd-slider-wrapper -->
+</section>
+
+
+
+		

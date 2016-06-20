@@ -16,12 +16,10 @@
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/materialize.css"> 
 	<link rel="stylesheet" href="css/font-awesome.min.css"> <!-- font awesome -->
-<!-- 	<link rel="stylesheet" href="bower/gallery/dist/gallery.min.css">
-	<link rel="stylesheet" href="bower/gallery/dist/gallery.theme.css"> -->
 	<link rel="shortcut icon" href="img/favicon.ico?v=2">
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
-	
 </head>
 <body>
 	 <header>
@@ -49,8 +47,7 @@
 	</nav>
 
 	<div ng-view></div>
-<!-- 	<slider images="images"/>
- -->
+
 	<div class="cd-overlay-nav">
 		<span></span>
 	</div> <!-- cd-overlay-nav -->
@@ -61,11 +58,35 @@
 
 	<a href="#" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
 
-<footer>
-<p class="foot-text">Copyrights &copy; 2015 | Designed By : Hilson Francis.</p>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Mission</h5>
+        <p class="grey-text">To designing and programming websites and applications.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Contact</h5>
+        <ul>
+          <li><a class="grey-text" href="tel:+3474430176">Tell: (347)443-0176</a></li>
+          <li><a class="grey-text" href="mailto:hfrancis103@gmail.com.com" target="_blank">Email: hfrancis103@hmail.com</a></li>
+          <li><a class="grey-text" href="https://twitter.com/hilson_d" target="_blank">Twitter: Hilson_D</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+    <span class="grey-text">© 2016 Copyright</span>
+    </div>
+  </div>
 </footer>
+
+
+
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/velocity.min.js"></script>
+<script src="js/materialize.js"></script>
 <script src="js/main.js"></script> <!-- Resource jQuery -->
 </body>
 </html>

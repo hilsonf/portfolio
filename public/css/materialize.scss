@@ -12,31 +12,18 @@
 /*@import "components/normalize";*/
 @import "components/myReset";
 
-// components
+// Materialize
 @import "components/global";
-@import "components/icons-material-design";
 @import "components/grid";
+@import "components/typography";
+@import "components/cards";
+@import "components/waves";
+@import "components/slider";
 
 // my components
 @import "components/myButton";
 @import "components/myEffect";
 @import "components/myNav";
 @import "components/myOvlay";
-
-@import "components/typography";
-@import "components/cards";
-@import "components/tabs";
-@import "components/tooltip";
-@import "components/dropdown";
-@import "components/waves";
-@import "components/modal";
-@import "components/collapsible";
-@import "components/chips";
-/*@import "components/materialbox";*/
-@import "components/forms/forms";
-@import "components/table_of_contents";
-@import "components/sideNav";
-@import "components/preloader";
-@import "components/slider";
-/*@import "components/carousel";*/
-
+@import "components/myStyles";
+@import "components/myVid";

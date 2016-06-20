@@ -1,0 +1,17 @@
+
+figure.effect-Beauty {
+  background-color: #17819c;
+  width: 100%;
+  overflow: hidden; }
+
+figure.effect-Beauty img {
+  opacity: 0.7;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15); }
+
+figure.effect-Beauty:hover img {
+  opacity: 0.5;
+  -webkit-transform: scale(1);
+  transform: scale(1); }

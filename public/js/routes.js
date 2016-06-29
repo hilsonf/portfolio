@@ -28,7 +28,9 @@ angular.module('myapp')
 		}  
 	})
 	.when('/resume',{
-		templateUrl: 'views/resume.html'
+		templateUrl: 'views/resume.html',
+		controller: 'resCtrl', function ($scope, $http){ 
+		}  
 	})
 	.otherwise('/')
 })

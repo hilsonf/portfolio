@@ -22,13 +22,10 @@ angular.module('myapp')
 	.when('/project4',{
 		templateUrl: 'views/project4.html' 
 	})
-	.when('/project5',{
-		templateUrl: 'views/project5.html',
-		controller: 'project5Ctrl', function ($scope, $http){ 
-		} 
-	})
-	.when('/project6',{
-		templateUrl: 'views/project6.html' 
+	.when('/designs',{
+		templateUrl: 'views/designs.html',
+		controller: 'designsCtrl', function ($scope, $http){ 
+		}  
 	})
 	.when('/resume',{
 		templateUrl: 'views/resume.html'

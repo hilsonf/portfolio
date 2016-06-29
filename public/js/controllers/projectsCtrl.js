@@ -14,11 +14,5 @@ myapp.controller('projectsCtrl',['$scope','$location', function($scope, $locatio
     $scope.proj4 = function() {
         $location.path('/project4');
     }
-    $scope.proj5 = function() {
-        $location.path('/project5');
-    }
-    $scope.proj6 = function() {
-        $location.path('/project6');
-    }
   
 }]);

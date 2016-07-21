@@ -10,3 +10,9 @@ node_modules
 # Bower
 public/bower
 
+# images 
+public/img
+
+# Downloads 
+public/downloads
+
